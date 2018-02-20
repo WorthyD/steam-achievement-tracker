@@ -1,6 +1,6 @@
 using System;
 
-namespace SteamAchievementTrackerNetCore.Models
+namespace sat_netcore.Models
 {
     public class ErrorViewModel
     {

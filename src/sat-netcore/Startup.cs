@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SteamAchievementTrackerNetCore
+namespace sat_netcore
 {
     public class Startup
     {
@@ -29,7 +29,6 @@ namespace SteamAchievementTrackerNetCore
         {
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else
