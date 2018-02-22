@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>sat_contracts</RootNamespace>
+    <AssemblyName>sat_contracts</AssemblyName>
   </PropertyGroup>
 
 </Project>
