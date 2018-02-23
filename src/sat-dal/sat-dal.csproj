@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>sat_dal</AssemblyName>
+    <RootNamespace>sat_dal</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sat-contracts\sat-contracts.csproj" />
+  </ItemGroup>
 
 </Project>
