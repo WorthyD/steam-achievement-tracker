@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>sat_business</RootNamespace>
+    <AssemblyName>sat_business</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sat-contracts\sat-contracts.csproj" />
+    <ProjectReference Include="..\sat-dal\sat-dal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SteamApiWrapper">
+      <HintPath>..\dlls\SteamApiWrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

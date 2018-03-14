@@ -13,12 +13,8 @@ namespace sat_dal.Models
     {
 
 
-        //[Key, Column(Order = 10), DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //[ForeignKey("PlayerProfile")]
         public long SteamId { get; set; }
 
-        //[Key, Column(Order = 20), DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //[ForeignKey("GameSchema")]
         public long AppID { get; set; }
 
         /*
@@ -28,10 +24,10 @@ namespace sat_dal.Models
         */
 
         //[Required]
-        public decimal Playtime_Forever { get; set; }
+        public decimal PlaytimeForever { get; set; }
 
         //[Required]
-        public decimal Playtime_2weeks { get; set; }
+        public decimal Playtime2weeks { get; set; }
 
         /*
         [Required]
@@ -65,7 +61,6 @@ namespace sat_dal.Models
 
         //[Required]
         public int TotalAchievements { get; set; }
-
 
         public virtual PlayerProfile PlayerProfile { get; set; }
 

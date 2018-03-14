@@ -12,4 +12,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\sat-business\sat-business.csproj" />
+    <ProjectReference Include="..\sat-contracts\sat-contracts.csproj" />
+    <ProjectReference Include="..\sat-dal\sat-dal.csproj" />
+  </ItemGroup>
+
 </Project>

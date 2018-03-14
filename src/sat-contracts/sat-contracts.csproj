@@ -6,4 +6,8 @@
     <AssemblyName>sat_contracts</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>
