@@ -25,7 +25,7 @@ namespace sat_dal.Models
         public string ImgLogoUrl { get; set; }
 
 
-        public virtual List<GameAchievement> GameAchievements { get; set; }
+        public virtual IList<IGameAchievement> GameAchievements { get; set; }
 
         public virtual List<PlayerGame> PlayerGames { get; set; }
 
@@ -36,7 +36,5 @@ namespace sat_dal.Models
 
         public int AvgUnlock { get; set; }
 
-
-     
     }
 }

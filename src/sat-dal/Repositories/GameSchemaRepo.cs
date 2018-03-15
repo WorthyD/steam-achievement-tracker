@@ -20,6 +20,11 @@ namespace sat_dal.Repositories
         {
         }
 
+        public async Task<IGameSchema> LoadGame(object appId)
+        {
+            return await this.Load(appId) as IGameSchema;
+        }
+
 
         public override async Task<Models.GameSchema> Load(object appId)
         {
@@ -35,6 +40,11 @@ namespace sat_dal.Repositories
 
         }
 
+        public async Task<IGameSchema> SaveGameSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
+        {
+            return await this.SaveSchema(AppId, game, serviceAch) as IGameSchema;
+        }
+
         public async Task<Models.GameSchema> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
         {
             long appId = AppId;
@@ -43,11 +53,11 @@ namespace sat_dal.Repositories
 
             if (appId < 1)
             {
-                gameSchema = Create();
+                gameSchema = Create() as Models.GameSchema;
             }
             else
             {
-                gameSchema = await this.Load(appId);
+                gameSchema = await this.Load(appId) as Models.GameSchema;
             }
 
             if (game.AvailableGameStats != null && game.AvailableGameStats.Achievements != null)
@@ -56,12 +66,12 @@ namespace sat_dal.Repositories
 
                 if (gameAchievements == null)
                 {
-                    gameSchema.GameAchievements = new List<Models.GameAchievement>();
+                    gameSchema.GameAchievements = null;
                 }
 
                 var actualPercentages = new List<IAchievementPercentage>();
 
-                foreach(var ach in game.AvailableGameStats.Achievements)
+                foreach (var ach in game.AvailableGameStats.Achievements)
                 {
                     var gameAch = gameSchema.GameAchievements.Where(x => x.Name == ach.Name).FirstOrDefault();
 
@@ -70,7 +80,7 @@ namespace sat_dal.Repositories
                         gameAch = new Models.GameAchievement();
                         gameSchema.GameAchievements.Add(gameAch);
                     }
-                    var percentage = serviceAch.AchievementPercentages.Where( x=> x.Name == ach.Name).FirstOrDefault();
+                    var percentage = serviceAch.AchievementPercentages.Where(x => x.Name == ach.Name).FirstOrDefault();
                     gameAch.AppId = appId;
                     gameAch.DisplayName = ach.DisplayName;
                     gameAch.Description = (string.IsNullOrEmpty(ach.Description)) ? string.Empty : ach.Description;
@@ -84,7 +94,7 @@ namespace sat_dal.Repositories
                 }
                 gameSchema.LastSchemaUpdate = DateTime.Now;
                 gameSchema.HasAchievements = true;
-                gameSchema.AvgUnlock = (int)(actualPercentages.Average(x => x.Percent);
+                gameSchema.AvgUnlock = (int)(actualPercentages.Average(x => x.Percent));
 
             }
             else
@@ -93,7 +103,7 @@ namespace sat_dal.Repositories
                 gameSchema.HasAchievements = false;
             }
 
-            if (! await SaveAsync())
+            if (!await SaveAsync())
             {
                 return null;
             }

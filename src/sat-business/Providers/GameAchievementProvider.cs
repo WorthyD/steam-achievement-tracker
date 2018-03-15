@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sat_dal.Models;
 using sat_contracts.repositories;
+using sat_contracts.models;
 
 namespace sat_business.Providers
 {
@@ -15,18 +16,18 @@ namespace sat_business.Providers
 
 
         public GameAchievementProvider(IGameSchemaRepo _gsr)
-            : base()
+            : base("")
         {
             this._gameSchemaRepo = _gsr;
         }
 
 
         //public async Task<Contracts.Models.IGameSchema> GetGameAchievements(long appId)
-        public async Task<GameSchema> GetGameAchievements(long appId)
+        public async Task<IGameSchema> GetGameAchievements(long appId)
         {
-            var db = new sat_dal.ModelContext();
+            //var db = new sat_dal.ModelContext();
 
-            var game = await this._gameSchemaRepo.Load(appId);
+            var game = await this._gameSchemaRepo.LoadGame(appId);
 
             if (game == null || ExperationService.isSchemaExpired(game.LastSchemaUpdate))
             {
@@ -42,13 +43,14 @@ namespace sat_business.Providers
                 var gameSchemaResult = await gameSchema;
                 var gameStatsResult = await gameStats;
 
-                game = ProcessSchema(db, appId, game, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements);
+               // game = await this._gameSchemaRepo.SaveSchema(appId, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements); //ProcessSchema(db, appId, game, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements);
             }
 
-            db.Dispose();
+            //db.Dispose();
             return game;
         }
 
+        /*
         public DataAccess.Models.GameSchema ProcessSchema(DataAccess.ModelContext db, long appId, DataAccess.Models.GameSchema game, SchemaForGame.Game gameSchema, List<GlobalAchievementPercentages.Achievement> achievementPercentages)
         {
             if (game == null)
@@ -102,5 +104,6 @@ namespace sat_business.Providers
 
             return game;
         }
+        */
     }
 }

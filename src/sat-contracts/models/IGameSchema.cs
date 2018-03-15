@@ -16,5 +16,7 @@ namespace sat_contracts.models
         DateTime LastSchemaUpdate { get; set; }
         int AvgUnlock { get; set; }
         bool HasAchievements { get; set; }
+
+        IList<IGameAchievement> GameAchievements { get; set; }
     }
 }
