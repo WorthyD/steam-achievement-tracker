@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>sat_dal_tests</AssemblyName>
+
+    <RootNamespace>sat_dal_tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
