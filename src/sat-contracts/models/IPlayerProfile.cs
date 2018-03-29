@@ -21,8 +21,8 @@ namespace sat_contracts.models
 
 
 
-        //virtual IList<IPlayerGame> PlayerGames { get; set; }
-        //virtual IList<IProfileRecentGame> PlayerRecentGames { get; set; }
-        //virtual IList<IPlayerGameAchievement> PlayerGameAchievements { get; set; }
+         IList<IPlayerGame> PlayerGames { get; set; }
+         IList<IProfileRecentGame> PlayerRecentGames { get; set; }
+         IList<IPlayerGameAchievement> PlayerGameAchievements { get; set; }
     }
 }

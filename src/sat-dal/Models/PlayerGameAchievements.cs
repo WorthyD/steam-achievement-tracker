@@ -9,7 +9,7 @@ using sat_contracts.models;
 
 namespace sat_dal.Models
 {
-    public class PlayerGameAchievement : IPlayerGameAchievement
+    public class PlayerGameAchievement
     {
 
 

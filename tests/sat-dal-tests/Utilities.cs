@@ -64,17 +64,28 @@ namespace sat_dal_tests
                 Stats = stats.ToArray()
             };
 
-            //IAvailableGameStats iag = new IAvailableGameStats()
-            //{
-
-            //}
-
-
             game.AvailableGameStats = dma;
 
-
             return game;
-
         }
+        public static Models.DummyAchievementPercentages getDummyAchievementPercentages()
+        {
+            var retVal = new Models.DummyAchievementPercentages();
+            retVal.AchievementPercentages = new List<sat_contracts.models.ServiceModels.IAchievementPercentage>();
+
+            retVal.AchievementPercentages.Add(new Models.DummyAchievementPercentage() {
+                Name = "Ach1",
+                Percent = 0
+            });
+
+            retVal.AchievementPercentages.Add(new Models.DummyAchievementPercentage() {
+                Name = "Ach2",
+                Percent = 100
+            });
+
+            return retVal;
+        }
+
+        
     }
 }

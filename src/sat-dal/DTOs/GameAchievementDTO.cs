@@ -1,17 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using sat_contracts.models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using sat_contracts.models;
 
-
-namespace sat_dal.Models
+namespace sat_dal.DTOs
 {
-    //Todo add game table for better updating
-    public class GameAchievement 
+    public class GameAchievementDTO : IGameAchievement
     {
         public long AppId { get; set; }
 
@@ -30,7 +24,6 @@ namespace sat_dal.Models
 
         public double Percent { get; set; }
 
-        public virtual GameSchema GameSchema { get; set; }
 
 
     }

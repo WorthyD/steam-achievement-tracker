@@ -5,18 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using  sat_contracts.models;
+using sat_contracts.models;
 
 namespace sat_dal.Models
 {
-    public class GameSchema : IGameSchema
+    public class GameSchema
     {
         public long AppId { get; set; }
 
         public string Name { get; set; }
 
         public DateTime LastSchemaUpdate { get; set; }
-
 
         public bool HasAchievements { get; set; }
 
@@ -25,7 +24,7 @@ namespace sat_dal.Models
         public string ImgLogoUrl { get; set; }
 
 
-        public virtual IList<IGameAchievement> GameAchievements { get; set; }
+        public virtual List<GameAchievement> GameAchievements { get; set; }
 
         public virtual List<PlayerGame> PlayerGames { get; set; }
 

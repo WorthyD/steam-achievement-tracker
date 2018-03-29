@@ -7,7 +7,7 @@ namespace sat_dal_tests.Models
 {
     public class DummyAvailableGameStats : IAvailableGameStats
     {
-        public IAchievement[] Achievements { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IStat[] Stats { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IAchievement[] Achievements { get; set; }
+        public IStat[] Stats { get; set; }
     }
 }

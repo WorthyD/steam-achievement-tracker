@@ -8,19 +8,14 @@ using System.Threading.Tasks;
 using sat_contracts.models;
 
 namespace sat_dal.Models {
-    public class ProfileRecentGame : IProfileRecentGame
+    public class ProfileRecentGame
     {
 
-        //[Key, Column(Order = 10)]
-        //[Required]
         public long SteamId { get; set; }
 
-        //[Key, Column(Order = 20)]
-        //[Required]
         public long AppId { get; set; }
 
         public virtual PlayerProfile PlayerProfile { get; set; }
-        //public virtual PlayerGame PlayerGame { get; set; }
         public virtual GameSchema GameSchema { get; set; }
     }
 }

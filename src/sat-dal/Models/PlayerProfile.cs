@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using sat_contracts.models;
 
 namespace sat_dal.Models {
-    public class PlayerProfile : IPlayerProfile{
+    public class PlayerProfile {
 
         //[Key,  DatabaseGenerated(DatabaseGeneratedOption.None)]
         //[Required]

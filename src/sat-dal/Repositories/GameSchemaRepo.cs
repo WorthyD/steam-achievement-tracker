@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using sat_contracts.models;
 using sat_contracts.repositories;
 using sat_contracts.models.ServiceModels;
+using sat_dal.DTOs;
 
 namespace sat_dal.Repositories
 {
@@ -22,7 +23,8 @@ namespace sat_dal.Repositories
 
         public async Task<IGameSchema> LoadGame(object appId)
         {
-            return await this.Load(appId) as IGameSchema;
+            var x = await this.Load(appId);
+            return AutoMapper.Mapper.Map<GameSchemaDTO>(x) as IGameSchema;
         }
 
 
@@ -33,7 +35,7 @@ namespace sat_dal.Repositories
             long id = (long)appId;
 
             gs = await Context.GameSchemas
-                .Include(x => x.GameAchievements)
+                // .Include(x => x.GameAchievements)
                 .FirstOrDefaultAsync(x => x.AppId == id);
 
             return gs;
@@ -45,31 +47,28 @@ namespace sat_dal.Repositories
             return await this.SaveSchema(AppId, game, serviceAch) as IGameSchema;
         }
 
-        public async Task<Models.GameSchema> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
+        public async Task<GameSchemaDTO> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
         {
             long appId = AppId;
 
             Models.GameSchema gameSchema;
 
-            if (appId < 1)
+            gameSchema = await this.Load(appId) as Models.GameSchema;
+
+            if (gameSchema == null)
             {
                 gameSchema = Create() as Models.GameSchema;
-            }
-            else
-            {
-                gameSchema = await this.Load(appId) as Models.GameSchema;
             }
 
             if (game.AvailableGameStats != null && game.AvailableGameStats.Achievements != null)
             {
-                var gameAchievements = gameSchema.GameAchievements;
 
-                if (gameAchievements == null)
+                if (gameSchema.GameAchievements == null)
                 {
-                    gameSchema.GameAchievements = null;
+                    gameSchema.GameAchievements = new List<Models.GameAchievement>();
                 }
 
-                var actualPercentages = new List<IAchievementPercentage>();
+                var actualPercentages = new List<double>();
 
                 foreach (var ach in game.AvailableGameStats.Achievements)
                 {
@@ -90,12 +89,12 @@ namespace sat_dal.Repositories
                     gameAch.Name = ach.Name;
                     gameAch.Percent = (percentage != null) ? percentage.Percent : 0;
 
+                    actualPercentages.Add(gameAch.Percent);
 
                 }
                 gameSchema.LastSchemaUpdate = DateTime.Now;
                 gameSchema.HasAchievements = true;
-                gameSchema.AvgUnlock = (int)(actualPercentages.Average(x => x.Percent));
-
+                gameSchema.AvgUnlock = (actualPercentages.Count > 0) ? (int)(actualPercentages.Average(x => x)) : 0;
             }
             else
             {
@@ -108,7 +107,7 @@ namespace sat_dal.Repositories
                 return null;
             }
 
-            return gameSchema;
+            return AutoMapper.Mapper.Map<GameSchemaDTO>(gameSchema);
 
         }
 

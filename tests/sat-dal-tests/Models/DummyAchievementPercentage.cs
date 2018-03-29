@@ -5,10 +5,9 @@ using System.Text;
 
 namespace sat_dal_tests.Models
 {
-    public class DummyStat : IStat
+    public class DummyAchievementPercentage : IAchievementPercentage
     {
         public string Name { get; set; }
-        public long Defaultvalue { get; set; }
-        public string DisplayName { get; set; }
+        public float Percent { get; set; }
     }
 }

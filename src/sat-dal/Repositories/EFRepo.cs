@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace sat_dal.Repositories
 {
-    public class EFRepo<TContext, TEntity> where TContext : DbContext
+    public class EFRepo<TContext, TEntity>
+            where TContext : DbContext
          where TEntity : class, new()
     {
 
-        
+
         /// <summary>
         /// Instance of an exception object that caused the last error
         /// </summary>
@@ -57,20 +58,20 @@ namespace sat_dal.Repositories
         /// as it can potentially operate on multiple entities,
         /// but it will fail on entity validations.
         /// </summary>        
-        
-            
-            /*
-        public ValidationErrorCollection ValidationErrors
+
+
+        /*
+    public ValidationErrorCollection ValidationErrors
+    {
+        get
         {
-            get
-            {
-                if (_validationErrors == null)
-                    _validationErrors = new ValidationErrorCollection();
-                return _validationErrors;
-            }
+            if (_validationErrors == null)
+                _validationErrors = new ValidationErrorCollection();
+            return _validationErrors;
         }
-        ValidationErrorCollection _validationErrors;
-        */
+    }
+    ValidationErrorCollection _validationErrors;
+    */
 
         /// <summary>
         /// Determines whether the Validate method is automatically called
@@ -108,7 +109,7 @@ namespace sat_dal.Repositories
             }
         }
 
-    
+
         #region CRUD operations
 
         /// <summary>
@@ -590,7 +591,7 @@ namespace sat_dal.Repositories
             //    ValidationErrors.Add("Error Message","object id");
             // return ValidationErrors.Count < 1;  // true - validate succeeds
 
-            return  true; //ValidationErrors.Count < 1;
+            return true; //ValidationErrors.Count < 1;
         }
         #endregion
 
