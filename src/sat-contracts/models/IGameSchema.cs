@@ -9,7 +9,7 @@ namespace sat_contracts.models
     public interface IGameSchema
     {
         long AppId { get; set; }
-        string Name { get; set; }
+        //string Name { get; set; }
         string ImgIconUrl { get; set; }
         string ImgLogoUrl { get; set; }
         bool HasCommunityVisibleStats { get; set; }

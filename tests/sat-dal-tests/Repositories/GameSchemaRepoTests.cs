@@ -19,6 +19,8 @@ namespace sat_dal_tests.Repositories
             var builder = new DbContextOptionsBuilder()
               .UseInMemoryDatabase();
 
+            sat_dal.Startup.RegisterMaps();
+
             this.db = new sat_dal.ModelContext(builder.Options);
             this._repo = new sat_dal.Repositories.GameSchemaRepo(this.db);
 
@@ -42,24 +44,11 @@ namespace sat_dal_tests.Repositories
 
             var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
 
-            Assert.Equal(testVar.AppId, appId);
-            Assert.Equal(testVar.Name, dummyGame.GameName);
+            Assert.Equal(appId, testVar.AppId);
+            Assert.Equal(dummyGame.AvailableGameStats.Achievements.Count(), testVar.GameAchievements.Count());
 
 
-
-
-            // sat_dal.ModelContext db = new sat_dal.ModelContext( { })
-            //sat_dal.Repositories.GameSchemaRepo repo = new sat_dal.Repositories.GameSchemaRepo();
-            //var builder = new DbContextOptionsBuilder()
-            //  .UseInMemoryDatabase();
-
-            //sat_dal.ModelContext db = new sat_dal.ModelContext(builder.Options);
-
-
-
-            // (long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
-            //this.db
-
+            //Assert.Equal(dummyGame.GameName, testVar.Name);
         }
     }
 }

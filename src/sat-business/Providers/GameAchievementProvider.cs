@@ -43,7 +43,10 @@ namespace sat_business.Providers
                 var gameSchemaResult = await gameSchema;
                 var gameStatsResult = await gameStats;
 
-               // game = await this._gameSchemaRepo.SaveSchema(appId, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements); //ProcessSchema(db, appId, game, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements);
+                var g = new sat_service_converter.DTOs.Game(gameSchemaResult.GameSchema);
+                var ach = new sat_service_converter.DTOs.AchievementPercentages(gameStatsResult.GlobalAchievementPercentages.achievements);
+
+                game = await this._gameSchemaRepo.SaveGameSchema(appId, g, ach); //ProcessSchema(db, appId, game, gameSchemaResult.GameSchema, gameStatsResult.GlobalAchievementPercentages.achievements);
             }
 
             //db.Dispose();

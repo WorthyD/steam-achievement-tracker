@@ -58,6 +58,7 @@ namespace sat_dal.Repositories
             if (gameSchema == null)
             {
                 gameSchema = Create() as Models.GameSchema;
+                gameSchema.AppId = appId;
             }
 
             if (game.AvailableGameStats != null && game.AvailableGameStats.Achievements != null)
@@ -79,7 +80,7 @@ namespace sat_dal.Repositories
                         gameAch = new Models.GameAchievement();
                         gameSchema.GameAchievements.Add(gameAch);
                     }
-                    var percentage = serviceAch.AchievementPercentages.Where(x => x.Name == ach.Name).FirstOrDefault();
+                    var percentage = serviceAch.ListAchievementPercentages.Where(x => x.Name == ach.Name).FirstOrDefault();
                     gameAch.AppId = appId;
                     gameAch.DisplayName = ach.DisplayName;
                     gameAch.Description = (string.IsNullOrEmpty(ach.Description)) ? string.Empty : ach.Description;
