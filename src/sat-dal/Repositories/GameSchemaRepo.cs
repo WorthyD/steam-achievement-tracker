@@ -34,10 +34,9 @@ namespace sat_dal.Repositories
 
             long id = (long)appId;
 
-            gs = await Context.GameSchemas
-                // .Include(x => x.GameAchievements)
-                .FirstOrDefaultAsync(x => x.AppId == id);
-
+                gs = await Context.GameSchemas
+                    // .Include(x => x.GameAchievements)
+                    .FirstOrDefaultAsync(x => x.AppId == id);
             return gs;
 
         }
@@ -103,7 +102,7 @@ namespace sat_dal.Repositories
                 gameSchema.HasAchievements = false;
             }
 
-            if (!await SaveAsync())
+            if (!await SaveAsync(gameSchema))
             {
                 return null;
             }

@@ -15,18 +15,24 @@ namespace sat_service_converter.DTOs
         public AvailableGameStats(SteamApiWrapper.Models.SchemaForGame.Availablegamestats a)
         {
             List<Stat> stats = new List<Stat>();
-            foreach (var item in a.stats)
+            if (a.stats != null)
             {
-                stats.Add(new Stat(item));
+                foreach (var item in a.stats)
+                {
+                    stats.Add(new Stat(item));
+                }
+                this.Stats = stats.ToArray();
             }
-            this.Stats = stats.ToArray();
 
-            List<Achievement> ach = new List<Achievement>();
-            foreach (var item in a.achievements)
+            if (a.achievements != null)
             {
-                ach.Add(new Achievement(item));
+                List<Achievement> ach = new List<Achievement>();
+                foreach (var item in a.achievements)
+                {
+                    ach.Add(new Achievement(item));
+                }
+                this.Achievements = ach.ToArray();
             }
-            this.Achievements = ach.ToArray();
         }
     }
 }

@@ -42,13 +42,12 @@ namespace sat_dal_tests.Repositories
             var t = await this._repo.Load(appId);
 
 
-            var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
+              var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
 
             Assert.Equal(appId, testVar.AppId);
             Assert.Equal(dummyGame.AvailableGameStats.Achievements.Count(), testVar.GameAchievements.Count());
 
 
-            //Assert.Equal(dummyGame.GameName, testVar.Name);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace sat_business.Providers
 
 
         public GameAchievementProvider(IGameSchemaRepo _gsr)
-            : base("")
+            : base("AE24AB02B6610D51BA9C8EA4128D11F3")
         {
             this._gameSchemaRepo = _gsr;
         }
@@ -39,7 +39,7 @@ namespace sat_business.Providers
                 var gameSchema = gameSchemaRequest.GetResponse();
                 var gameStats = gameStatRequest.GetResponse();
 
-                await Task.WhenAll(gameSchema, gameStats);
+                //await Task.WhenAll(gameSchema, gameStats);
                 var gameSchemaResult = await gameSchema;
                 var gameStatsResult = await gameStats;
 

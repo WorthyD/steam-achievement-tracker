@@ -19,9 +19,9 @@ namespace sat_dal.Models
 
         public bool HasAchievements { get; set; }
 
-        public string ImgIconUrl { get; set; }
+        //public string ImgIconUrl { get; set; }
 
-        public string ImgLogoUrl { get; set; }
+        //public string ImgLogoUrl { get; set; }
 
 
         public virtual List<GameAchievement> GameAchievements { get; set; }

@@ -65,11 +65,11 @@ namespace sat_dal
 
 
             builder.Entity<GameSchema>().HasKey(c => new { c.AppId });
-            builder.Entity<GameSchema>().Property(c => c.AppId).IsRequired();
-            builder.Entity<GameSchema>().Property(c => c.Name).IsRequired().HasMaxLength(250);
+            builder.Entity<GameSchema>().Property(c => c.AppId).IsRequired().ValueGeneratedNever();  //GetType//.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            builder.Entity<GameSchema>().Property(c => c.Name).HasMaxLength(250);
             builder.Entity<GameSchema>().Property(c => c.LastSchemaUpdate).IsRequired();
             builder.Entity<GameSchema>().Property(c => c.HasAchievements).IsRequired();
-            builder.Entity<GameSchema>().Property(c => c.ImgLogoUrl).IsRequired().HasMaxLength(250);
+            //builder.Entity<GameSchema>().Property(c => c.ImgLogoUrl).IsRequired().HasMaxLength(250);
             builder.Entity<GameSchema>().Property(c => c.HasCommunityVisibleStats).IsRequired();
             builder.Entity<GameSchema>().Property(c => c.AvgUnlock).IsRequired();
             builder.Entity<GameSchema>().HasMany(c => c.GameAchievements);
@@ -102,7 +102,7 @@ namespace sat_dal
 
 
             builder.Entity<PlayerProfile>().HasKey(c => new { c.SteamId });
-            builder.Entity<PlayerProfile>().Property(c => c.SteamId).IsRequired();
+            builder.Entity<PlayerProfile>().Property(c => c.SteamId).IsRequired().ValueGeneratedNever();
             builder.Entity<PlayerProfile>().Property(c => c.PersonaName).IsRequired().HasMaxLength(250);
             builder.Entity<PlayerProfile>().Property(c => c.RealName).IsRequired().HasMaxLength(250);
             builder.Entity<PlayerProfile>().Property(c => c.AvatarFull).IsRequired().HasMaxLength(250);

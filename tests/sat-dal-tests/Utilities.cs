@@ -71,14 +71,14 @@ namespace sat_dal_tests
         public static Models.DummyAchievementPercentages getDummyAchievementPercentages()
         {
             var retVal = new Models.DummyAchievementPercentages();
-            retVal.AchievementPercentages = new List<sat_contracts.models.ServiceModels.IAchievementPercentage>();
+            retVal.ListAchievementPercentages = new List<sat_contracts.models.ServiceModels.IAchievementPercentage>();
 
-            retVal.AchievementPercentages.Add(new Models.DummyAchievementPercentage() {
+            retVal.ListAchievementPercentages.Add(new Models.DummyAchievementPercentage() {
                 Name = "Ach1",
                 Percent = 0
             });
 
-            retVal.AchievementPercentages.Add(new Models.DummyAchievementPercentage() {
+            retVal.ListAchievementPercentages.Add(new Models.DummyAchievementPercentage() {
                 Name = "Ach2",
                 Percent = 100
             });

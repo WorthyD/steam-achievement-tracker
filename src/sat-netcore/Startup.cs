@@ -1,11 +1,17 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using sat_business.Providers;
+using sat_contracts.repositories;
+using sat_dal;
+using sat_dal.Repositories;
 
 namespace sat_netcore
 {
@@ -22,6 +28,25 @@ namespace sat_netcore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //Dependancy Injection?
+            services.AddScoped<GameAchievementProvider>();
+
+            services.AddScoped<DbContext, ModelContext>();
+
+            services.AddAutoMapper();
+            var mapConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new sat_dal.DalMappingProfile());
+            });
+            var mapper = mapConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IGameSchemaRepo, GameSchemaRepo>();
+
+            services.AddDbContext<ModelContext>(optionsAction =>
+                   optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +60,8 @@ namespace sat_netcore
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            
 
             app.UseStaticFiles();
 

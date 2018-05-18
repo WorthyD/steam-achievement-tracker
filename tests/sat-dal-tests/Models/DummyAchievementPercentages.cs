@@ -7,6 +7,6 @@ namespace sat_dal_tests.Models
 {
     public class DummyAchievementPercentages : IAchievementPercentages
     {
-        public List<IAchievementPercentage> AchievementPercentages { get; set; }
+        public List<IAchievementPercentage> ListAchievementPercentages { get; set; }
     }
 }

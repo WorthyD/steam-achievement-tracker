@@ -16,15 +16,15 @@ namespace sat_service_converter.DTOs
             this.Name = a.name;
             this.Percent = a.percent;
         }
-        public static List<AchievementPercentage> Bulk(List<SteamApiWrapper.Models.GlobalAchievementPercentages.Achievement> achievements)
-        {
-            List<AchievementPercentage> aps = new List<AchievementPercentage>();
-            foreach(var a in achievements)
-            {
-                aps.Add(new AchievementPercentage(a));
-            }
-            return aps;
+        //public static List<AchievementPercentage> Bulk(List<SteamApiWrapper.Models.GlobalAchievementPercentages.Achievement> achievements)
+        //{
+        //    List<AchievementPercentage> aps = new List<AchievementPercentage>();
+        //    foreach(var a in achievements)
+        //    {
+        //        aps.Add(new AchievementPercentage(a));
+        //    }
+        //    return aps;
             
-        }
+        //}
     }
 }

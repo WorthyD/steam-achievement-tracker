@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://sat.localhost",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:51702/",
       "sslPort": 0
@@ -16,8 +20,9 @@
       }
     },
     "sat-netcore": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
+      "launchUrl": "http://sat.localhost",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

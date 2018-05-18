@@ -11,9 +11,10 @@ using System;
 namespace sat_dal.Migrations
 {
     [DbContext(typeof(ModelContext))]
-    partial class ModelContextModelSnapshot : ModelSnapshot
+    [Migration("20180517235630_stuff3333")]
+    partial class stuff3333
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,6 +65,7 @@ namespace sat_dal.Migrations
                     b.Property<DateTime>("LastSchemaUpdate");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(250);
 
                     b.HasKey("AppId");
