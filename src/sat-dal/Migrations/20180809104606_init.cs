@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
 namespace sat_dal.Migrations
 {
-    public partial class Stuff : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,15 +11,12 @@ namespace sat_dal.Migrations
                 name: "GameSchemas",
                 columns: table => new
                 {
-                    AppId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AvgUnlock = table.Column<int>(nullable: false),
-                    HasAchievements = table.Column<bool>(nullable: false),
-                    Img_Icon_Url = table.Column<string>(nullable: true),
-                    Img_Logo_Url = table.Column<string>(maxLength: 250, nullable: false),
+                    AppId = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(maxLength: 250, nullable: true),
                     LastSchemaUpdate = table.Column<DateTime>(nullable: false),
-                    Name = table.Column<string>(maxLength: 250, nullable: false),
-                    has_community_visible_stats = table.Column<bool>(nullable: false)
+                    HasAchievements = table.Column<bool>(nullable: false),
+                    HasCommunityVisibleStats = table.Column<bool>(nullable: false),
+                    AvgUnlock = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,14 +27,13 @@ namespace sat_dal.Migrations
                 name: "PlayerProfiles",
                 columns: table => new
                 {
-                    SteamId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AvatarFull = table.Column<string>(maxLength: 250, nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
-                    LibraryLastUpdate = table.Column<DateTime>(nullable: false),
+                    SteamId = table.Column<long>(nullable: false),
                     PersonaName = table.Column<string>(maxLength: 250, nullable: false),
+                    RealName = table.Column<string>(maxLength: 250, nullable: false),
+                    AvatarFull = table.Column<string>(maxLength: 250, nullable: false),
                     ProfileUrl = table.Column<string>(maxLength: 250, nullable: false),
-                    RealName = table.Column<string>(maxLength: 250, nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LibraryLastUpdate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,15 +68,15 @@ namespace sat_dal.Migrations
                 name: "PlayerGames",
                 columns: table => new
                 {
-                    AppID = table.Column<long>(nullable: false),
                     SteamId = table.Column<long>(nullable: false),
+                    AppID = table.Column<long>(nullable: false),
+                    PlaytimeForever = table.Column<decimal>(nullable: false),
+                    Playtime2weeks = table.Column<decimal>(nullable: false),
+                    LastUpdated = table.Column<DateTime>(nullable: false),
                     AchievementRefresh = table.Column<DateTime>(nullable: false),
+                    RefreshAchievements = table.Column<bool>(nullable: false),
                     AchievementsEarned = table.Column<int>(nullable: false),
                     AchievementsLocked = table.Column<int>(nullable: false),
-                    LastUpdated = table.Column<DateTime>(nullable: false),
-                    Playtime_2weeks = table.Column<decimal>(nullable: false),
-                    Playtime_Forever = table.Column<decimal>(nullable: false),
-                    RefreshAchievements = table.Column<bool>(nullable: false),
                     TotalAchievements = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

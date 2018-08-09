@@ -13,6 +13,10 @@ using sat_contracts.repositories;
 using sat_dal;
 using sat_dal.Repositories;
 
+using NJsonSchema;
+using NSwag.AspNetCore;
+using System.Reflection;
+
 namespace sat_netcore
 {
     public class Startup
@@ -64,6 +68,13 @@ namespace sat_netcore
             
 
             app.UseStaticFiles();
+            
+            // Enable the Swagger UI middleware and the Swagger generator
+            //app.UseSwaggerUi(typeof(Startup).GetTypeInfo().Assembly, settings =>
+            //{
+            //    settings.GeneratorSettings.DefaultPropertyNameHandling =
+            //        PropertyNameHandling.CamelCase;
+            //});
 
             app.UseMvc(routes =>
             {
