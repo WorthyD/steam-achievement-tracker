@@ -19,7 +19,8 @@ namespace sat_dal_tests.Repositories
             var builder = new DbContextOptionsBuilder()
               .UseInMemoryDatabase();
 
-            sat_dal.Startup.RegisterMaps();
+            //AutoMapper.Mapper.Reset();
+            //sat_dal.Startup.RegisterMaps();
 
             this.db = new sat_dal.ModelContext(builder.Options);
             this._repo = new sat_dal.Repositories.GameSchemaRepo(this.db);

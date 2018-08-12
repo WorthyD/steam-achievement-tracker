@@ -4,6 +4,16 @@ using System.Text;
 
 namespace sat_dal_tests
 {
+    public static class Startups 
+    {
+        public static void Configure()
+        {
+            sat_dal.Startup.RegisterMaps();
+        }
+
+    }
+
+
     public class Utilities
     {
         public static Models.DummyGame getDummyGame()
@@ -84,6 +94,20 @@ namespace sat_dal_tests
             });
 
             return retVal;
+        }
+
+        public static Models.DummyProfile getDummyProfile()
+        {
+            return new Models.DummyProfile()
+            {
+                AvatarFull = "lorem",
+                LastUpdate = DateTime.Now,
+                LibraryLastUpdate = DateTime.Now,
+                PersonaName = "Testing",
+                ProfileUrl = "Testing 1",
+                RealName = "testing 2",
+                SteamId = 123456
+            };
         }
 
         
