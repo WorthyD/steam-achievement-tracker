@@ -12,39 +12,57 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System.Threading;
+using sat_dal.Models;
+using sat_dal.DTOs;
 
 namespace sat_dal_tests
 {
-    public class TestFixture 
+    public class TestFixture :IDisposable
     {
         public sat_dal.ModelContext db;
         protected readonly TestServer _server;
+        //private static Mutex mutex = new Mutex();
+        public static bool isInitialized = false;
 
 
-        public TestFixture()
+        public TestFixture() 
         {
-           // // disable automapper static registration
-           // ServiceCollectionExtensions.UseStaticRegistration = false;
+           // ServiceCollectionExtensions.UseStaticRegistration = false; // <-- HERE
+
+           // var hostBuilder = new WebHostBuilder()
+           //     .UseEnvironment("Testing")
+           //     .UseStartup<Startup>();
+
+           //var  Server = new TestServer(hostBuilder);
+           // var Client = Server.CreateClient();
 
 
-           // var builder = new DbContextOptionsBuilder()
-           //   .UseInMemoryDatabase();
+            // // disable automapper static registration
+            // ServiceCollectionExtensions.UseStaticRegistration = false;
 
-           // //AutoMapper.Mapper.Reset();
-           // //sat_dal.Startup.RegisterMaps();
-           //// Microsoft.AspNetCore.WebHost
 
-           // this.db = new sat_dal.ModelContext(builder.Options);
-           // //_server = new TestServer(WebHost.CreateDefaultBuilder().UseStartup<TestStartup>())
-           // //var host = new HostBuilder()
-           // _server = new TestServer(new HostBuilder());
+            var builder = new DbContextOptionsBuilder()
+              .UseInMemoryDatabase();
 
+            //AutoMapper.Mapper.Reset();
+            // sat_dal.Startup.ResetMaps();
+            AutoMapper.ServiceCollectionExtensions.UseStaticRegistration = false;
+            if (isInitialized == false) {
+                sat_dal.Startup.RegisterMaps();
+                isInitialized = true;
+            }
+            //// Microsoft.AspNetCore.WebHost
+
+            this.db = new sat_dal.ModelContext(builder.Options);
         }
 
         public void Dispose()
         {
+           // AutoMapper.Mapper.Reset();
             this.db.Dispose();
-            this._server.Dispose();
+            AutoMapper.Mapper.Reset();
+            //this._server.Dispose();
         }
 
     }

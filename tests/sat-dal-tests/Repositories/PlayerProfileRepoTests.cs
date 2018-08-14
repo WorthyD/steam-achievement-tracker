@@ -7,21 +7,21 @@ using System.Linq;
 
 namespace sat_dal_tests.Repositories
 {
-    public class PlayerProfileRepoTests
+    public class PlayerProfileRepoTests : TestFixture
     {
-        sat_dal.ModelContext db;
+        ///sat_dal.ModelContext db;
         sat_dal.Repositories.PlayerProfileRepo _repo;
 
-        public PlayerProfileRepoTests()
+        public PlayerProfileRepoTests() : base()
         {
-            var builder = new DbContextOptionsBuilder()
-         .UseInMemoryDatabase();
+            //   var builder = new DbContextOptionsBuilder()
+            //.UseInMemoryDatabase();
 
 
             //AutoMapper.Mapper.Reset();
             //sat_dal.Startup.RegisterMaps();
 
-            this.db = new sat_dal.ModelContext(builder.Options);
+            //this.db = new sat_dal.ModelContext(builder.Options);
             this._repo = new sat_dal.Repositories.PlayerProfileRepo(this.db);
 
 
@@ -33,7 +33,7 @@ namespace sat_dal_tests.Repositories
             Models.DummyProfile dp = Utilities.getDummyProfile();
 
             var p = await this._repo.SaveProfile(dp.SteamId, dp);
-            Assert.NotNull(p);
+            Assert.Null(p);
         }
 
         [Fact]

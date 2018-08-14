@@ -11,6 +11,7 @@ namespace sat_dal
     {
         public static void RegisterMaps()
         {
+           // Mapper.Reset();
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<GameAchievement, GameAchievementDTO>();
@@ -33,6 +34,11 @@ namespace sat_dal
                 cfg.CreateMap<ProfileRecentGameDTO, ProfileRecentGame>();
 
             });
+        }
+
+        public static void ResetMaps()
+        {
+            Mapper.Reset();
         }
     }
 }

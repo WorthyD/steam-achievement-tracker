@@ -13,7 +13,7 @@ namespace sat_dal_tests.Repositories
         sat_dal.Repositories.GameSchemaRepo _repo;
 
 
-        public GameSchemaRepoTests()
+        public GameSchemaRepoTests() : base()
         {
             this._repo = new sat_dal.Repositories.GameSchemaRepo(this.db);
 
