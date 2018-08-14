@@ -47,7 +47,7 @@ namespace sat_dal_tests
 
             //AutoMapper.Mapper.Reset();
             // sat_dal.Startup.ResetMaps();
-            AutoMapper.ServiceCollectionExtensions.UseStaticRegistration = false;
+            //AutoMapper.ServiceCollectionExtensions.UseStaticRegistration = false;
             if (isInitialized == false) {
                 sat_dal.Startup.RegisterMaps();
                 isInitialized = true;
