@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace sat_dal_tests.Repositories
 {
-    public class GameSchemaRepoTests : TestFixture
+    public class GameSchemaRepoTests : DalTestFixture
     {
 
         sat_dal.Repositories.GameSchemaRepo _repo;

@@ -18,7 +18,7 @@ using sat_dal.DTOs;
 
 namespace sat_dal_tests
 {
-    public class TestFixture :IDisposable
+    public class TextFixture :IDisposable
     {
         public sat_dal.ModelContext db;
         protected readonly TestServer _server;
@@ -26,7 +26,7 @@ namespace sat_dal_tests
         public static bool isInitialized = false;
 
 
-        public TestFixture() 
+        public void TesxFixture() 
         {
            // ServiceCollectionExtensions.UseStaticRegistration = false; // <-- HERE
 

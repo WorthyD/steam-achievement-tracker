@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace sat_dal_tests.Repositories
 {
-    public class PlayerProfileRepoTests : TestFixture
+    public class PlayerProfileRepoTests : DalTestFixture
     {
         ///sat_dal.ModelContext db;
         sat_dal.Repositories.PlayerProfileRepo _repo;
 
-        public PlayerProfileRepoTests() : base()
+        public PlayerProfileRepoTests()
         {
             //   var builder = new DbContextOptionsBuilder()
             //.UseInMemoryDatabase();

@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\sat-contracts\sat-contracts.csproj" />
     <ProjectReference Include="..\..\src\sat-dal\sat-dal.csproj" />
+    <ProjectReference Include="..\sat-tests-shared\sat-tests-shared.csproj" />
   </ItemGroup>
 
 </Project>
