@@ -36,7 +36,7 @@ namespace sat_tests_shared
         {
             var server = new TestServer(
                 new WebHostBuilder()
-                    .UseStartup<Startup>()
+                     .UseStartup<sat_netcore.Startup>()
                     .ConfigureAppConfiguration(config =>
                     {
                         config.SetBasePath(Path.Combine(Path.GetFullPath(@"../../../.."), "Kodkod.Tests.Shared"));
