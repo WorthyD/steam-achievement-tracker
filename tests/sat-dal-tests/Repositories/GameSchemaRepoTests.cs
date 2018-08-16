@@ -38,5 +38,23 @@ namespace sat_dal_tests.Repositories
 
 
         }
+        [Fact]
+        public async void SaveGameSchema2()
+        {
+
+            long appId = 12345;
+            var dummyGame = Utilities.getDummyGame();
+            var dummyAchievements = Utilities.getDummyAchievementPercentages();
+
+            var t = await this._repo.Load(appId);
+
+
+            var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
+
+            Assert.Equal(appId, testVar.AppId);
+            Assert.Equal(dummyGame.AvailableGameStats.Achievements.Count(), testVar.GameAchievements.Count());
+
+
+        }
     }
 }

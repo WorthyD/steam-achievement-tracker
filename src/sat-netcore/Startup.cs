@@ -39,12 +39,13 @@ namespace sat_netcore
             services.AddScoped<DbContext, ModelContext>();
 
             services.AddAutoMapper();
-            var mapConfig = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new sat_dal.DalMappingProfile());
-            });
-            var mapper = mapConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            //var mapConfig = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.AddProfile(new sat_dal.DalMappingProfile());
+            //});
+            //var mapper = mapConfig.CreateMapper();
+            //services.AddSingleton(mapper);
+
 
             services.AddScoped<IGameSchemaRepo, GameSchemaRepo>();
 

@@ -22,6 +22,7 @@ namespace sat_tests_shared
     public class TestFixture
     {
         protected readonly IMapper Mapper;
+        protected readonly HttpClient Client;
 
         public TestFixture()
         {
@@ -30,6 +31,7 @@ namespace sat_tests_shared
                   configure => { configure.AddProfile<DalMappingProfile>(); }
               )
           );
+            Client = GetTestServer();
         }
 
         private static HttpClient GetTestServer()
@@ -39,8 +41,8 @@ namespace sat_tests_shared
                      .UseStartup<sat_netcore.Startup>()
                     .ConfigureAppConfiguration(config =>
                     {
-                        config.SetBasePath(Path.Combine(Path.GetFullPath(@"../../../.."), "Kodkod.Tests.Shared"));
-                        config.AddJsonFile("appsettings.json", false);
+                        //    config.SetBasePath(Path.Combine(Path.GetFullPath(@"../../../.."), "Kodkod.Tests.Shared"));
+                        // config.AddJsonFile("appsettings.json", false);
                     })
             );
 
