@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\sat-dal\sat-dal.csproj" />
+    <ProjectReference Include="..\..\src\sat-netcore\sat-netcore.csproj" />
   </ItemGroup>
 
 </Project>
