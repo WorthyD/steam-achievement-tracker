@@ -4,15 +4,6 @@ using System.Text;
 
 namespace sat_dal_tests
 {
-    public static class Startups 
-    {
-        public static void Configure()
-        {
-            sat_dal.Startup.RegisterMaps();
-        }
-
-    }
-
 
     public class Utilities
     {

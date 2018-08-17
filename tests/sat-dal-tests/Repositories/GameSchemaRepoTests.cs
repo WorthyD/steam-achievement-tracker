@@ -13,7 +13,7 @@ namespace sat_dal_tests.Repositories
         sat_dal.Repositories.GameSchemaRepo _repo;
 
 
-        public GameSchemaRepoTests() : base()
+        public GameSchemaRepoTests() 
         {
             this._repo = new sat_dal.Repositories.GameSchemaRepo(this.db);
 
@@ -31,7 +31,7 @@ namespace sat_dal_tests.Repositories
             var t = await this._repo.Load(appId);
 
 
-            var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
+            var testVar = await this._repo.SaveSchema(appId, dummyGame, dummyAchievements);
 
             Assert.Equal(appId, testVar.AppId);
             Assert.Equal(dummyGame.AvailableGameStats.Achievements.Count(), testVar.GameAchievements.Count());
@@ -49,7 +49,7 @@ namespace sat_dal_tests.Repositories
             var t = await this._repo.Load(appId);
 
 
-            var testVar = await this._repo.SaveGameSchema(appId, dummyGame, dummyAchievements);
+            var testVar = await this._repo.SaveSchema(appId, dummyGame, dummyAchievements);
 
             Assert.Equal(appId, testVar.AppId);
             Assert.Equal(dummyGame.AvailableGameStats.Achievements.Count(), testVar.GameAchievements.Count());

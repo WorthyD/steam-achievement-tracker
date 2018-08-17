@@ -16,15 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3BD1EB61
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sat-business-tests", "tests\sat-business-tests\sat-business-tests.csproj", "{2F06B0AB-D361-4987-B6DD-3DF38615BF73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sat-dal-mock", "tests\sat-dal-mock\sat-dal-mock.csproj", "{10775A99-4E8C-4342-A4A0-847C96DD4C19}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sat-dal-tests", "tests\sat-dal-tests\sat-dal-tests.csproj", "{BD08BAAE-FD1C-4C0E-A274-04507BCC5F5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sat-service-converter", "sat-service-converter\sat-service-converter.csproj", "{D47ED4FC-E29E-4223-947F-7D203F74378E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sat-dal-business-integration-tests", "tests\sat-dal-business-integration-tests\sat-dal-business-integration-tests.csproj", "{C1B16783-06A2-4463-957F-BFF79D1A2F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sat-tests-shared", "tests\sat-tests-shared\sat-tests-shared.csproj", "{7DDC07FF-E861-466C-80BD-06E25A88E704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sat-tests-shared", "tests\sat-tests-shared\sat-tests-shared.csproj", "{7DDC07FF-E861-466C-80BD-06E25A88E704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,18 +94,6 @@ Global
 		{2F06B0AB-D361-4987-B6DD-3DF38615BF73}.Release|x64.Build.0 = Release|Any CPU
 		{2F06B0AB-D361-4987-B6DD-3DF38615BF73}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F06B0AB-D361-4987-B6DD-3DF38615BF73}.Release|x86.Build.0 = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|x64.Build.0 = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Debug|x86.Build.0 = Debug|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|x64.ActiveCfg = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|x64.Build.0 = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|x86.ActiveCfg = Release|Any CPU
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19}.Release|x86.Build.0 = Release|Any CPU
 		{BD08BAAE-FD1C-4C0E-A274-04507BCC5F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD08BAAE-FD1C-4C0E-A274-04507BCC5F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD08BAAE-FD1C-4C0E-A274-04507BCC5F5C}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -166,7 +152,6 @@ Global
 		{CC0B4CD5-6574-4B5E-A007-01BCAA216ECA} = {4531EDFC-6439-43A2-9D7E-1A07EF043BD4}
 		{38D7AD61-2AAF-4829-B5E2-23C9CED5977C} = {4531EDFC-6439-43A2-9D7E-1A07EF043BD4}
 		{2F06B0AB-D361-4987-B6DD-3DF38615BF73} = {3BD1EB61-6B8E-4B93-AC0D-D87BEF0C81CE}
-		{10775A99-4E8C-4342-A4A0-847C96DD4C19} = {3BD1EB61-6B8E-4B93-AC0D-D87BEF0C81CE}
 		{BD08BAAE-FD1C-4C0E-A274-04507BCC5F5C} = {3BD1EB61-6B8E-4B93-AC0D-D87BEF0C81CE}
 		{D47ED4FC-E29E-4223-947F-7D203F74378E} = {4531EDFC-6439-43A2-9D7E-1A07EF043BD4}
 		{C1B16783-06A2-4463-957F-BFF79D1A2F50} = {3BD1EB61-6B8E-4B93-AC0D-D87BEF0C81CE}

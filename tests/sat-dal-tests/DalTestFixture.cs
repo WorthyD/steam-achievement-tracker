@@ -10,13 +10,13 @@ namespace sat_dal_tests
     public class DalTestFixture : TestFixture
     {
 
-        public sat_dal.ModelContext db;
+        //public sat_dal.ModelContext db;
         public DalTestFixture()
         {
-            var builder = new DbContextOptionsBuilder()
-               .UseInMemoryDatabase();
+            //var builder = new DbContextOptionsBuilder()
+            //   .UseInMemoryDatabase();
 
-            this.db = new sat_dal.ModelContext(builder.Options);
+            //this.db = new sat_dal.ModelContext(builder.Options);
         }
     }
 }

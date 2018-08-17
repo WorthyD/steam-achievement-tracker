@@ -23,6 +23,8 @@ namespace sat_tests_shared
     {
         protected readonly IMapper Mapper;
         protected readonly HttpClient Client;
+        protected readonly ModelContext db;
+
 
         public TestFixture()
         {
@@ -32,6 +34,10 @@ namespace sat_tests_shared
               )
           );
             Client = GetTestServer();
+
+            db = GetInitializedDbContext();
+
+
         }
 
         private static HttpClient GetTestServer()
@@ -47,6 +53,34 @@ namespace sat_tests_shared
             );
 
             return server.CreateClient();
+        }
+        public static sat_dal.ModelContext GetInitializedDbContext()
+        {
+            var inMemoryContext = GetEmptyDbContext();
+
+            //Seed Data
+            /*
+            inMemoryContext.AddRange(PermissionConsts.AllPermissions());
+            inMemoryContext.AddRange(RoleConsts.AdminRole, RoleConsts.ApiUserRole);
+            inMemoryContext.AddRange(AllTestUsers);
+            inMemoryContext.AddRange(AdminUserRole, TestUserRole);
+            inMemoryContext.AddRange(AdminRolePermission, ApiUserRolePermission);
+            */
+
+            inMemoryContext.SaveChanges();
+
+            return inMemoryContext;
+        }
+        public static sat_dal.ModelContext GetEmptyDbContext()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<sat_dal.ModelContext>();
+            optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
+            //optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.EnableSensitiveDataLogging();
+
+            var inMemoryContext = new ModelContext(optionsBuilder.Options);
+
+            return inMemoryContext;
         }
     }
 }

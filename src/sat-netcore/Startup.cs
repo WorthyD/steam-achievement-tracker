@@ -48,7 +48,7 @@ namespace sat_netcore
             //services.AddSingleton(mapper);
 
 
-            services.AddScoped<IGameSchemaRepo, GameSchemaRepo>();
+            services.AddScoped<sat_dal.Repositories.IGameSchemaRepo, GameSchemaRepo>();
 
             services.AddDbContext<ModelContext>(optionsAction =>
                    optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

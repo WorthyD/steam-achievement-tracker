@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using sat_contracts.models;
-using sat_contracts.repositories;
 using sat_contracts.models.ServiceModels;
 using sat_dal.DTOs;
 
@@ -35,7 +34,7 @@ namespace sat_dal.Repositories
 
         }
 
-        //public async Task<IGameSchema> SaveGameSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
+        //public async Task<IGameSchema> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
         //{
         //    return await this.SaveSchema(AppId, game, serviceAch) as IGameSchema;
         //}
