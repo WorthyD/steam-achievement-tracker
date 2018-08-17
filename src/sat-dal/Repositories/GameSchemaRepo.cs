@@ -17,16 +17,10 @@ namespace sat_dal.Repositories
 {
     public class GameSchemaRepo : EFRepo<ModelContext, Models.GameSchema>, IGameSchemaRepo
     {
+
         public GameSchemaRepo(ModelContext context) : base(context)
         {
         }
-
-        public async Task<IGameSchema> LoadGame(object appId)
-        {
-            var x = await this.Load(appId);
-            return AutoMapper.Mapper.Map<GameSchemaDTO>(x) as IGameSchema;
-        }
-
 
         public override async Task<Models.GameSchema> Load(object appId)
         {
@@ -34,19 +28,19 @@ namespace sat_dal.Repositories
 
             long id = (long)appId;
 
-                gs = await Context.GameSchemas
-                    // .Include(x => x.GameAchievements)
-                    .FirstOrDefaultAsync(x => x.AppId == id);
+            gs = await Context.GameSchemas
+                // .Include(x => x.GameAchievements)
+                .FirstOrDefaultAsync(x => x.AppId == id);
             return gs;
 
         }
 
-        public async Task<IGameSchema> SaveGameSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
-        {
-            return await this.SaveSchema(AppId, game, serviceAch) as IGameSchema;
-        }
+        //public async Task<IGameSchema> SaveGameSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
+        //{
+        //    return await this.SaveSchema(AppId, game, serviceAch) as IGameSchema;
+        //}
 
-        public async Task<GameSchemaDTO> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
+        public async Task<Models.GameSchema> SaveSchema(long AppId, sat_contracts.models.ServiceModels.IGame game, sat_contracts.models.ServiceModels.IAchievementPercentages serviceAch)
         {
             long appId = AppId;
 
@@ -107,7 +101,7 @@ namespace sat_dal.Repositories
                 return null;
             }
 
-            return AutoMapper.Mapper.Map<GameSchemaDTO>(gameSchema);
+            return gameSchema;
 
         }
 

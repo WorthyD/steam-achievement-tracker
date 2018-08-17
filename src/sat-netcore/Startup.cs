@@ -38,7 +38,8 @@ namespace sat_netcore
 
             services.AddScoped<DbContext, ModelContext>();
 
-            services.AddAutoMapper();
+            //services.AddAutoMapper();
+            services.AddSatDal();
             //var mapConfig = new MapperConfiguration(cfg =>
             //{
             //    cfg.AddProfile(new sat_dal.DalMappingProfile());

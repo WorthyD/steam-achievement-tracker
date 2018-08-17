@@ -24,7 +24,7 @@ namespace sat_business.Providers
 
         public async Task<IGameSchema> GetGameAchievements(long appId)
         {
-            var game = await this._gameSchemaRepo.LoadGame(appId);
+            var game = await this._gameSchemaRepo.Load(appId);
             if (game == null || ExperationService.isSchemaExpired(game.LastSchemaUpdate))
             {
                 var gameSchemaRequest = new SteamApiWrapper.SteamUserStats.GetSchemaForGameRequest(base.APIKey);
@@ -42,7 +42,7 @@ namespace sat_business.Providers
                 var g = new sat_service_converter.DTOs.Game(gameSchemaResult.GameSchema);
                 var ach = new sat_service_converter.DTOs.AchievementPercentages(gameStatsResult.GlobalAchievementPercentages.achievements);
 
-                game = await this._gameSchemaRepo.SaveGameSchema(appId, g, ach); 
+                game = await this._gameSchemaRepo.SaveSchema(appId, g, ach); 
             }
 
             return game;
