@@ -39,7 +39,9 @@ namespace sat_dal_tests.Repositories
         [Fact]
         public async void RetrieveProfile()
         {
-
+            var mockProfile = sat_tests_shared.MockData.getMockProfile();
+            var p = await this._repo.LoadProfile(mockProfile.SteamId);
+            Assert.Equal(mockProfile.RealName, p.RealName);
         }
 
         [Fact]

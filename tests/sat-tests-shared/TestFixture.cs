@@ -66,6 +66,7 @@ namespace sat_tests_shared
             inMemoryContext.AddRange(AdminUserRole, TestUserRole);
             inMemoryContext.AddRange(AdminRolePermission, ApiUserRolePermission);
             */
+            inMemoryContext.Add(MockData.getMockProfile());
 
             inMemoryContext.SaveChanges();
 
