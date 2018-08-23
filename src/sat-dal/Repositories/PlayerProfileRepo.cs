@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using sat_contracts.models;
 using sat_contracts.repositories;
 using sat_contracts.models.ServiceModels;
 using sat_dal.DTOs;
@@ -32,18 +31,7 @@ namespace sat_dal.Repositories
             return pp;
         }
 
-        public async Task<IPlayerProfile> LoadProfile(object profileId)
-        {
-            var x = await this.Load(profileId);
-            return AutoMapper.Mapper.Map<GameSchemaDTO>(x) as IPlayerProfile;
-        }
-
-        public async Task<IPlayerProfile> SaveProfile(long profileId, sat_contracts.models.IPlayerProfile profile) {
-            return await this.Save(profileId, profile) as IPlayerProfile;
-           
-        }
-
-        private async Task<PlayerProfileDTO> Save(long profileId, sat_contracts.models.IPlayerProfile profile)
+        public async Task<Models.PlayerProfile> Save(long profileId, sat_contracts.models.IPlayerProfile profile)
         {
             Models.PlayerProfile p;
 
@@ -53,14 +41,20 @@ namespace sat_dal.Repositories
                 p = Create() as Models.PlayerProfile;
             }
 
-            p = profile as Models.PlayerProfile;
+            p.AvatarFull = profile.AvatarFull;
+            p.LastUpdate = profile.LastUpdate;
+            p.LibraryLastUpdate = profile.LibraryLastUpdate;
+            p.PersonaName = profile.PersonaName;
+            p.ProfileUrl = profile.ProfileUrl;
+            p.RealName = profile.RealName;
+            p.SteamId = profile.SteamId;
 
             if (!await SaveAsync(p))
             {
                 return null;
             }
 
-            return AutoMapper.Mapper.Map<PlayerProfileDTO>(p);
+            return p;
 
         }
 
