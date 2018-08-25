@@ -19,5 +19,13 @@ namespace sat_tests_shared
                 SteamId = 123456
             };
         }
+
+        public static sat_dal.Models.PlayerGame getMockGame()
+        {
+            sat_dal.Models.PlayerGame game = new sat_dal.Models.PlayerGame();
+            game.
+
+
+        }
     }
 }
