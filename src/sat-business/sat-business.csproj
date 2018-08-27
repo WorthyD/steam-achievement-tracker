@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\sat-service-converter\sat-service-converter.csproj" />
     <ProjectReference Include="..\sat-contracts\sat-contracts.csproj" />
     <ProjectReference Include="..\sat-dal\sat-dal.csproj" />

@@ -14,6 +14,7 @@ namespace sat_business
                 .ForMember(dest => dest.RealName, opt => opt.MapFrom(src => src.profileurl ?? "Not Found"))
                 .ForMember(dest => dest.SteamId, opt => opt.MapFrom(src => long.Parse(src.steamid)));
 
+            CreateMap<sat_dal.Models.PlayerProfile, PlayerProfileDTO>().ReverseMap();
         }
     }
 }

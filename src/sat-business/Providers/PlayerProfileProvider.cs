@@ -33,19 +33,24 @@ namespace sat_business.Providers
         {
 
             var profile = await this._profileRepo.Load(steamID);
+            IPlayerProfile ipp;
 
             if (profile == null)
             {
-
+                ipp = await this.AddUserProfile(steamID);
             }
             else if (ExperationService.isProfileExpired(profile.LastUpdate))
             {
-
+                ipp = await this.UpdateUserProfile(profile);
+            }
+            else
+            {
+                ipp = this._mapper.Map<PlayerProfileDTO>(profile);
             }
 
 
 
-            return null;
+            return ipp;
         }
         private async Task<IPlayerProfile> AddUserProfile(long steamId)
         {
@@ -54,14 +59,21 @@ namespace sat_business.Providers
             playerProfile.LastUpdate = DateTime.Now;
             playerProfile.LibraryLastUpdate = new DateTime(2000, 1, 1);
 
-            await this._profileRepo.Save(steamId, playerProfile);
+            //Async save
+            this._profileRepo.Save(steamId, playerProfile);
+
             return playerProfile;
         }
 
         private async Task<IPlayerProfile> UpdateUserProfile(PlayerProfile profile)
         {
+            var steamProfile = this.GetExternalProfile(profile.SteamId);
+            PlayerProfileDTO playerProfile = this._mapper.Map<PlayerProfileDTO>(steamProfile);
+            playerProfile.LastUpdate = DateTime.Now;
 
-            return null;
+            this._profileRepo.Save(profile.SteamId, playerProfile);
+
+            return playerProfile;
         }
 
 
