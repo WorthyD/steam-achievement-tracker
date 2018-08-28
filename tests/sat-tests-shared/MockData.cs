@@ -8,6 +8,8 @@ namespace sat_tests_shared
     {
         private static long WORTHYD_STEAMID = 76561198025095151;
         private static long STARDEW_APPID = 413150;
+        private static long BORDERLAND_APPID = 49520;
+        private static long FF6_APPID = 382900;
 
         public static sat_dal.Models.PlayerProfile getMockProfile()
         {
@@ -23,17 +25,27 @@ namespace sat_tests_shared
             };
         }
 
-        public static sat_dal.Models.PlayerGame getMockGame()
+        public static sat_dal.Models.PlayerGame getMockGame(long appId)
         {
             sat_dal.Models.PlayerGame game = new sat_dal.Models.PlayerGame();
-            game.AppID = STARDEW_APPID;
+            game.AppID = appId;
             game.LastUpdated = DateTime.MinValue;
-            game.SteamId = 76561198025095151;
+            game.SteamId = STARDEW_APPID;
             game.TotalAchievements = 1;
             game.Playtime2weeks = 0;
             game.PlaytimeForever = 0;
 
             return game;
+        }
+
+        public static List<sat_dal.Models.PlayerGame> getMockLibrary()
+        {
+            var lib = new List<sat_dal.Models.PlayerGame>();
+            lib.Add(getMockGame(STARDEW_APPID));
+            lib.Add(getMockGame(BORDERLAND_APPID));
+            lib.Add(getMockGame(FF6_APPID));
+
+            return lib;
         }
     }
 }
