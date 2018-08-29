@@ -6,10 +6,10 @@ namespace sat_tests_shared
 {
     public static class MockData
     {
-        private static long WORTHYD_STEAMID = 76561198025095151;
-        private static long STARDEW_APPID = 413150;
-        private static long BORDERLAND_APPID = 49520;
-        private static long FF6_APPID = 382900;
+        public static long WORTHYD_STEAMID = 76561198025095151;
+        public static long STARDEW_APPID = 413150;
+        public static long BORDERLAND_APPID = 49520;
+        public static long FF6_APPID = 382900;
 
         public static sat_dal.Models.PlayerProfile getMockProfile()
         {

@@ -90,6 +90,7 @@ namespace sat_business.Providers
             if (response == null || response.Players == null)
             {
                 //Throw new exception
+                throw new Exceptions.PlayerNotFoundException();
             }
             return response.Players.FirstOrDefault();
 
