@@ -22,10 +22,4 @@
     <ProjectReference Include="..\sat-dal\sat-dal.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="SteamApiWrapper">
-      <HintPath>..\dlls\SteamApiWrapper.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

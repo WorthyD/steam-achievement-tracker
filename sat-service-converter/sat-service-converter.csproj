@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SteamApiWrapper">
-      <HintPath>..\src\dlls\SteamApiWrapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,6 +55,10 @@
     <ProjectReference Include="..\src\sat-contracts\sat-contracts.csproj">
       <Project>{13a348f9-597c-49dd-86b8-8f10b93172ec}</Project>
       <Name>sat-contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\SteamApiWrapper\SteamApiWrapper.csproj">
+      <Project>{139aedd2-7b47-4c5d-a471-f2261f390450}</Project>
+      <Name>SteamApiWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

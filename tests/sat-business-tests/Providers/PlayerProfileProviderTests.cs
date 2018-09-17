@@ -22,7 +22,7 @@ namespace sat_business_tests.Providers
         public async void RetrieveProfile()
         {
 
-            var x = this._provider.GetPlayerProfile(sat_tests_shared.MockData.WORTHYD_STEAMID);
+            var x = await this._provider.GetPlayerProfile(sat_tests_shared.MockData.WORTHYD_STEAMID);
             Assert.NotNull(x);
             //long appId = 12345;
             //var dummyGame = Utilities.getDummyGame();
@@ -43,7 +43,7 @@ namespace sat_business_tests.Providers
         {
             var x = this._provider.GetPlayerProfile(sat_tests_shared.MockData.WORTHYD_STEAMID);
 
-            //Exception ex =  Assert.Throws<PlayerNotFoundException>(() =>  this._provider.GetPlayerProfile(sat_tests_shared.MockData.WORTHYD_STEAMID));
+            Exception ex = await  Assert.ThrowsAsync<PlayerNotFoundException>(async () =>  await this._provider.GetPlayerProfile(123456));
 
         }
     }
