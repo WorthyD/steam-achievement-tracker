@@ -41,7 +41,6 @@ namespace sat_business_tests.Providers
         [Fact]
         public async void RetrieveInvalidProfile()
         {
-            var x = this._provider.GetPlayerProfile(sat_tests_shared.MockData.WORTHYD_STEAMID);
 
             Exception ex = await  Assert.ThrowsAsync<PlayerNotFoundException>(async () =>  await this._provider.GetPlayerProfile(123456));
 

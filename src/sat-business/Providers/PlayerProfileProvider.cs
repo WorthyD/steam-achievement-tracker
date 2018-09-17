@@ -54,7 +54,7 @@ namespace sat_business.Providers
         }
         private async Task<IPlayerProfile> AddUserProfile(long steamId)
         {
-            var steamProfile = this.GetExternalProfile(steamId);
+            var steamProfile = await this.GetExternalProfile(steamId);
             PlayerProfileDTO playerProfile = this._mapper.Map<PlayerProfileDTO>(steamProfile);
             playerProfile.LastUpdate = DateTime.Now;
             playerProfile.LibraryLastUpdate = new DateTime(2000, 1, 1);
@@ -67,11 +67,11 @@ namespace sat_business.Providers
 
         private async Task<IPlayerProfile> UpdateUserProfile(PlayerProfile profile)
         {
-            var steamProfile = this.GetExternalProfile(profile.SteamId);
+            var steamProfile = await this.GetExternalProfile(profile.SteamId);
             PlayerProfileDTO playerProfile = this._mapper.Map<PlayerProfileDTO>(steamProfile);
             playerProfile.LastUpdate = DateTime.Now;
 
-            this._profileRepo.Save(profile.SteamId, playerProfile);
+             this._profileRepo.Save(profile.SteamId, playerProfile);
 
             return playerProfile;
         }
@@ -87,7 +87,7 @@ namespace sat_business.Providers
 
             var response = await request.GetResponse();
 
-            if (response == null || response.Players == null)
+            if (response == null || response.Players == null || response.Players.Length == 0)
             {
                 //Throw new exception
                 throw new Exceptions.PlayerNotFoundException();
