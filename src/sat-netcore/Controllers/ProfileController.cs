@@ -6,15 +6,28 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
+using sat_business.Providers;
+
 namespace sat_netcore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ProfileController : ControllerBase
     {
-        public async Task<sat_contracts.models.IPlayerProfile> Get()
+        private PlayerProfileProvider PlayerProvider;
+        public ProfileController(PlayerProfileProvider pr)
         {
-            return null;
+            PlayerProvider = pr;
+        }
+
+        public async Task<ActionResult> Get()
+        {
+            //Get SteamID from logged in user.
+            long steamId = 76561198025095151;
+
+            var p = await PlayerProvider.GetPlayerProfile(steamId); 
+
+            return Ok(p);
         }
 
     }

@@ -35,6 +35,7 @@ namespace sat_netcore
 
             //Dependancy Injection?
             services.AddScoped<GameAchievementProvider>();
+            services.AddScoped<PlayerProfileProvider>();
 
             services.AddScoped<DbContext, ModelContext>();
 
@@ -49,6 +50,7 @@ namespace sat_netcore
 
 
             services.AddScoped<sat_dal.Repositories.IGameSchemaRepo, GameSchemaRepo>();
+            services.AddScoped<sat_dal.Repositories.IPlayerProfileRepo, PlayerProfileRepo>();
 
             services.AddDbContext<ModelContext>(optionsAction =>
                    optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
