@@ -9,10 +9,13 @@ export const INITIAL_STATE: IAppState = {
   steamId: 0
 };
 
-export function rootReducer(lastState: IAppState, action: Action): IAppState {
+export function rootReducer(lastState: IAppState, action): IAppState {
   switch (action.type) {
     case Actions.LOGIN:
-      return { steamId: 2 };
+      return Object.assign({}, lastState, {
+        steamId: action.steamId
+      });
+    // return { steamId: 2 };
   }
   return lastState;
 }
