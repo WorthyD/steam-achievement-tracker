@@ -17,5 +17,5 @@ export class User {
   public id: string;
   public userName: string;
   public roles: string[];
-  public isEnabled: boolean;,h
+  public isEnabled: boolean;
 }

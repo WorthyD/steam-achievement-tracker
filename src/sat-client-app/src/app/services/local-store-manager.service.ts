@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Utilities } from '../services/utilities.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LocalStoreManager {
   public static readonly DBKEY_USER_DATA = 'user_data';
   private static readonly DBKEY_SYNC_KEYS = 'sync_keys';
@@ -307,7 +310,7 @@ export class LocalStoreManager {
 
     const data = this.getData(key);
 
-    if (data == null){
+    if (data == null) {
       return;
     }
 
@@ -321,7 +324,7 @@ export class LocalStoreManager {
 
     const data = this.getData(key);
 
-    if (data == null){
+    if (data == null) {
       return;
     }
 
@@ -335,7 +338,7 @@ export class LocalStoreManager {
 
     const data = this.getData(key);
 
-    if (data == null){
+    if (data == null) {
       return;
     }
 
@@ -347,7 +350,7 @@ export class LocalStoreManager {
 
     let data = sessionStorage.getItem(key);
 
-    if (data == null){
+    if (data == null) {
       data = localStorage.getItem(key);
     }
 
@@ -361,7 +364,7 @@ export class LocalStoreManager {
 
     let data = this.sessionStorageGetItem(key);
 
-    if (data == null){
+    if (data == null) {
       data = this.localStorageGetItem(key);
     }
 
@@ -374,7 +377,7 @@ export class LocalStoreManager {
     let data = this.getData(key);
 
     if (data != null) {
-      if (isDateType){
+      if (isDateType) {
         data = new Date(data);
       }
 

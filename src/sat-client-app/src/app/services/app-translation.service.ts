@@ -9,7 +9,9 @@ import { Observable, Subject, of } from 'rxjs';
 
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppTranslationService {
 
   readonly defaultLanguage = 'en';
@@ -43,7 +45,8 @@ export class AppTranslationService {
   useBrowserLanguage(): string | void {
     const browserLang = this.getBrowserLanguage();
 
-    if (browserLang.match(/en|fr|de|ar|ko|pt/)) {
+    //if (browserLang.match(/en|fr|de|ar|ko|pt/)) {
+    if (browserLang.match(/en/)) {
       this.changeLanguage(browserLang);
       return browserLang;
     }
@@ -89,16 +92,16 @@ export class TranslateLanguageLoader implements TranslateLoader {
     switch (lang) {
       case 'en':
         return of(require('../assets/locale/en.json'));
-      case 'fr':
-        return of(require('../assets/locale/fr.json'));
-      case 'de':
-        return of(require('../assets/locale/de.json'));
-      case 'pt':
-        return of(require('../assets/locale/pt.json'));
-      case 'ar':
-        return of(require('../assets/locale/ar.json'));
-      case 'ko':
-        return of(require('../assets/locale/ko.json'));
+      // case 'fr':
+      //   return of(require('../assets/locale/fr.json'));
+      // case 'de':
+      //   return of(require('../assets/locale/de.json'));
+      // case 'pt':
+      //   return of(require('../assets/locale/pt.json'));
+      // case 'ar':
+      //   return of(require('../assets/locale/ar.json'));
+      // case 'ko':
+      //   return of(require('../assets/locale/ko.json'));
       default:
     }
   }
