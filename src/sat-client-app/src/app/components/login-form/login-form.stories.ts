@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/angular';
-import { LoginFormComponent } from 'login-form.component';
+import { LoginFormComponent } from './login-form.component';
 
 storiesOf('My Button', module)
   .add('with some emoji', () => ({
@@ -7,4 +7,7 @@ storiesOf('My Button', module)
     props: {
       text: '',
     },
+    moduleMetadata: {
+      //imports: [forms here],
+    }
   }));
